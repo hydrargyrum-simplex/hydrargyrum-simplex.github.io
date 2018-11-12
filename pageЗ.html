@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>PAGE 3</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+</head>
+ 
+<body>
+<?php
+$name = $_POST['name']; // собираем введенные данные и записываемв переменные
+$email = $_POST['email'];
+$mes = $_POST['mes'];
+$text .= "Имя: $name \n"; 
+$text .= "Почта: $email \n"; 
+$text .= "Сообщение: $mes \n";
+  if (!empty($name) && !empty($email) && !empty($mes)) //если все переменные имеют значения выполняем запись в файл
+    {
+    $file = fopen ("message.txt", "a+"); //открываем для перезаписи файл message.txt лежаший в одной папке с текущей страницей
+    fwrite ($file,$text); // пишем в файл
+    fclose ($file); // закрываем файл
+    }
+?>
+<form action="vopros.php" method="post">
+<p>Ваше имя
+<input name="name" type="text" class="lnews_data" size="30">
+</p>
+<p>Ваше e-mail
+<input name="email" type="text" class="lnews_data" size="40">
+</p>
+<p>Ваш вопрос
+<textarea name="mes" cols="50" rows="5" class="lnews_data"></textarea>
+</p>
+<p>
+<label>
+<input type="submit" name="submit" id="submit" value="спросить">
+</label>
+</p>
+</form>
+<pre><? include ("message.txt")?></pre>
+</body>
+</html>
