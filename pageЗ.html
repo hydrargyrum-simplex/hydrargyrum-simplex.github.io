@@ -4,7 +4,10 @@
 <title>PAGE 3</title>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
 </head>
- 
+ htmlspecialchars($_POST['name']);
+ htmlspecialchars($_POST['email']);
+ htmlspecialchars($_POST['mes']);
+ htmlspecialchars($_POST['submit']);
 <body>
 <?php
 $name = $_POST['name']; // собираем введенные данные и записываемв переменные
